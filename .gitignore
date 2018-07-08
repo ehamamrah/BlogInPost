@@ -21,3 +21,4 @@
 .rubocop.yml
 ./draper.sh
 .keep
+.swp

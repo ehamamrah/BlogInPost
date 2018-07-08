@@ -1,4 +1,4 @@
-module Requestable
+module Postable
   extend ActiveSupport::Concern
 
   included do
