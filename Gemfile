@@ -65,6 +65,8 @@ gem 'font-awesome-sass'
 # Config
 gem 'devise'
 gem 'friendly_id'
+gem 'cancancan', '~> 2.0'
+gem 'rolify'
 
 # Flash Alert In Nice Way
 gem 'growlyflash'
