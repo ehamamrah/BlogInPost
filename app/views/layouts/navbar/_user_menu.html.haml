@@ -1,0 +1,7 @@
+%li
+  = link_to '#' do
+    = icon('fas', 'cogs', t(:settings))
+%li.divider{:role => "separator"}
+%li
+  = link_to destroy_user_session_path, method: :delete do
+    = icon('fas', 'sign-out-alt', t(:sign_out))

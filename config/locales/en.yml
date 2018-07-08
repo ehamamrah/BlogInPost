@@ -1,33 +1,102 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  ### A ###
+  about: About
+  active: Active
+  account: Account
+  add: Add
+
+  ### B ###
+  bio: Biography
+
+  ### C ###
+  category: Category
+  categories: Categories
+  change_password: Change Password
+  characters_minimum: characters minimum
+  contact_us: Contact Us
+  country: Country
+  create_post: Create Post
+  created_at: Created at
+  continue_reading: Continue reading
+  current_password_required: We need your current password to confirm your changes
+  current_password: Current Password
+  create_password: Create new password
+  create: Create
+
+  ### D ###
+  didnt_recieve_confirmation: Didn't receive confirmation instructions?
+  description: A brief about your post.
+  drafted: Drafted
+
+  ### E ###
+  edit: Edit
+
+  ### F ###
+  forgot_your_password: Forgot your password?
+
+  ### H ###
+  home: Home
+  hidden: Hidden
+
+  ### I ###
+  is_active: Active
+  in_active: In-Active
+
+  ### J ###
+  join_date: Join Date
+  join_us: Join Us
+
+  ### M ###
+  member_since: 'Member Since: '
+  menu: Menu
+  modify: 'Modify '
+  missing_details: Some information required, please update your profile.
+  most_recent: Most Recent
+
+  ### N ###
+  no_data: No data available
+
+
+  ### O ###
+  options: Options
+
+  ### P ###
+  password: Password
+  password_confirmation: Confirm Password
+  pick_a_username: Pick a username
+  posts_shared: Posts Shared
+  posts_list: Posts List
+  posts: Posts
+  post: Post
+  post_title: Post Title
+  post_removed: Post removed successfully
+  publish: Publish
+  published: Published
+
+  ### R ###
+  recent_posts: Recent Posts
+
+  ### S ###
+  settings: Settings
+  select_gender: Select Gender
+  send: Send
+  sign_in: Sign In
+  sign_out: Sign Out
+  sign_up: Join Us
+  something_went_wrong: Something went wrong while processing, Please try again
+  successfully_created: Successfully created...
+  successfully_updated: Successfully updated...
+
+  ### T ###
+  trash: Trash
+
+  ### U ###
+  unlock_instructions: Didn't receive unlock instructions?
+  username: Username
+  update: Update
+
+  ### W ###
+  welcome_back: 'Welcome Back,'
+
+  ### Y ###
+  your_email: Your Email

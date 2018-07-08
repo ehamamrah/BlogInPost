@@ -1,0 +1,34 @@
+%nav.navbar.navbar-default.navbar-fixed-top.custom-navbar
+  .container
+    .navbar-header
+      %button.navbar-toggle.collapsed{"aria-controls" => "navbar", "aria-expanded" => "false", "data-target" => "#navbar", "data-toggle" => "collapse", :type => "button"}
+        %span.sr-only Toggle navigation
+        %span.icon-bar
+        %span.icon-bar
+        %span.icon-bar
+      = link_to "Blog'n Post", root_path, class: 'navbar-brand logo'
+    #navbar.collapse.navbar-collapse
+      %ul.nav.navbar-nav
+        %li
+          = link_to '#' do
+            = icon('fas', 'list', t(:recent_posts))
+
+        %li
+          = link_to '#' do
+            = icon('fas', 'briefcase', t(:categories))
+
+      %ul.nav.navbar-nav.navbar-right
+        - if user_signed_in?
+          %li.dropdown
+            = link_to '#', class: 'dropdown-toggle', "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :role => "button"  do
+              = icon('fas', 'bars', t(:menu))
+
+            %ul.dropdown-menu
+              = render partial: 'layouts/navbar/user_menu'
+        - else
+          %li
+            = link_to new_user_session_path do
+              = icon('fas', 'sign-in-alt', t(:sign_in))
+          %li
+            = link_to new_user_registration_path do
+              = icon('fas', 'user-plus', t(:sign_up))
