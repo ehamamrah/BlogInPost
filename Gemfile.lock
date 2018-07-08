@@ -78,6 +78,8 @@ GEM
     erubi (1.7.1)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.8.7)
+      i18n (>= 0.7)
     ffi (1.9.25)
     font-awesome-sass (5.0.13)
       sassc (>= 1.11)
@@ -238,6 +240,7 @@ DEPENDENCIES
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
   devise
+  faker
   font-awesome-sass
   friendly_id
   growlyflash

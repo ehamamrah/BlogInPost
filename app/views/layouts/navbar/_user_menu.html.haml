@@ -1,7 +1,26 @@
-%li
-  = link_to '#' do
-    = icon('fas', 'cogs', t(:settings))
-%li.divider{:role => "separator"}
-%li
-  = link_to destroy_user_session_path, method: :delete do
-    = icon('fas', 'sign-out-alt', t(:sign_out))
+- if user_signed_in?
+  %li.dropdown
+    = link_to '#', class: 'dropdown-toggle', "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :role => "button"  do
+      = icon('fas', 'bars', t(:menu))
+
+    %ul.dropdown-menu
+      %li
+        = link_to '#' do
+          = icon('fas', 'cogs', t(:settings))
+
+      - if can?(:manage, Category)
+        %li
+          = link_to categories_path do
+            = icon('fas', 'list-alt', t(:manage_categories))
+
+      %li.divider{:role => "separator"}
+      %li
+        = link_to destroy_user_session_path, method: :delete do
+          = icon('fas', 'sign-out-alt', t(:sign_out))
+- else
+  %li
+    = link_to new_user_session_path do
+      = icon('fas', 'sign-in-alt', t(:sign_in))
+  %li
+    = link_to new_user_registration_path do
+      = icon('fas', 'user-plus', t(:sign_up))

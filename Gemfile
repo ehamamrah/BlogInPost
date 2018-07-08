@@ -67,6 +67,7 @@ gem 'devise'
 gem 'friendly_id'
 gem 'cancancan', '~> 2.0'
 gem 'rolify'
+gem 'faker'
 
 # Flash Alert In Nice Way
 gem 'growlyflash'

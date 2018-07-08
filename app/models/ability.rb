@@ -16,8 +16,6 @@ class Ability
     can :read, Post
     can %i[edit read update destroy create], Post, user_id: user.id
 
-    can :manage, Comment, user_id: user.id
-
     cannot :manage, Category
     can :read, Category
   end

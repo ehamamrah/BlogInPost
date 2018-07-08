@@ -4,6 +4,7 @@ en:
   active: Active
   account: Account
   add: Add
+  active_category: Active Category
 
   ### B ###
   bio: Biography
@@ -11,11 +12,14 @@ en:
   ### C ###
   category: Category
   categories: Categories
+  category_name: Category Name
+  cannot_remove_category_associated_with_posts: Category assosciated with active posts, not allowed to remove it.
   change_password: Change Password
   characters_minimum: characters minimum
   contact_us: Contact Us
   country: Country
   create_post: Create Post
+  create_category: Create Category
   created_at: Created at
   continue_reading: Continue reading
   current_password_required: We need your current password to confirm your changes
@@ -24,6 +28,7 @@ en:
   create: Create
 
   ### D ###
+  deleted_successfully: Delete process done.
   didnt_recieve_confirmation: Didn't receive confirmation instructions?
   description: A brief about your post.
   drafted: Drafted
@@ -47,6 +52,7 @@ en:
   join_us: Join Us
 
   ### M ###
+  manage_categories: Manage Categories
   member_since: 'Member Since: '
   menu: Menu
   modify: 'Modify '
@@ -78,6 +84,7 @@ en:
 
   ### S ###
   settings: Settings
+  shared_this: shared this
   select_gender: Select Gender
   send: Send
   sign_in: Sign In

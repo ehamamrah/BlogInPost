@@ -1,0 +1,26 @@
+.container.manage-channels
+  .pull-left
+    %h2= t(:category_list)
+    %p= t(:listing_all_categories)
+  .pull-right
+    %h2
+    = link_to t(:create_category), new_category_path, class: 'btn btn-info custom-button'
+  %table.table.table-bordered.table-hover
+    %thead
+      %tr.custom-head
+        %th= t(:category_name)
+        %th= t(:posts_shared)
+        %th= t(:status)
+        %th= t(:options)
+    %tbody
+    - @categories.each do |category|
+      %tr
+        %td= category.name
+        %td
+          = category.posts.count
+          = t(:posts)
+        %td
+          = CATEGORIES_STATUS.key(category.status).capitalize
+        %td
+          = link_to t(:edit), edit_category_path(category)
+          = link_to t(:delete), category_path(category), method: :delete

@@ -1,0 +1,13 @@
+.col-md-6.col-md-offset-3.devise
+  %h2= @category.persisted? ? t(:modify) + @category.name : t(:create_category)
+  %hr
+  = simple_form_for(@category) do |f|
+    = f.error_notification
+
+    .form-inputs
+      = f.input :name, required: true, label: false, placeholder: t(:category_name), autofocus: true, class: 'form-control'
+      = f.select :status, options_for_select(statuses, @category.status), {}, class: 'form-control'
+
+    %br
+    .form-actions
+      = f.button :submit
