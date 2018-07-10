@@ -78,6 +78,7 @@ en:
   post_removed: Post removed successfully
   publish: Publish
   published: Published
+  please_select_status: Please select category status
 
   ### R ###
   recent_posts: Recent Posts
@@ -93,6 +94,8 @@ en:
   something_went_wrong: Something went wrong while processing, Please try again
   successfully_created: Successfully created...
   successfully_updated: Successfully updated...
+  submit: Submit
+  status: Status
 
   ### T ###
   trash: Trash

@@ -3,7 +3,7 @@ user_details = { email: 'example@example.com',
                  password: '123123123' }
 
 @user = User.create(email: user_details[:email],
-                 password: user_details[:password])
+                    password: user_details[:password])
 
 # Remove the default role granted before, make the user as super admin
 @user.add_role ROLES[:superadmin]

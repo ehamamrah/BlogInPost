@@ -31,6 +31,7 @@ class CategoriesController < ApplicationController
     if @category.destroy
       flash[:success] = t(:deleted_successfully)
     else
+      # Flash error when trying to destroy a category that have posts
       flash[:alert] = t(:cannot_remove_category_associated_with_posts)
     end
     redirect_to categories_path
