@@ -3,7 +3,7 @@ en:
   about: About
   active: Active
   account: Account
-  add: Add
+  add: 'New'
   active_category: Active Category
 
   ### B ###
@@ -32,6 +32,7 @@ en:
   didnt_recieve_confirmation: Didn't receive confirmation instructions?
   description: A brief about your post.
   drafted: Drafted
+  delete: Delete
 
   ### E ###
   edit: Edit

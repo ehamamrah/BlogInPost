@@ -9,6 +9,6 @@ class Post < ApplicationRecord
 
   validates_presence_of :title, :description, :content
   validates :title, length: { minimum: 2 }
-  validates :description, length: { maximum: 600 }
+  validates :description, length: { maximum: 450 }
   validates :content, length: { in: 6..5000 }
 end

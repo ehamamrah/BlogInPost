@@ -13,3 +13,14 @@ user_details = { email: 'example@example.com',
   Category.create(name: Faker::Book.genre,
                   status: CATEGORIES_STATUS[:active])
 end
+
+# Creating Posts
+10.times do
+  user     = User.order('RANDOM()').first
+  category = Category.order('RANDOM()').first
+  Post.create(user: user, category: category,
+              title: Faker::Lorem.sentence,
+              description: Faker::Lorem.sentence,
+              content: Faker::Lorem.paragraph,
+              status: POST_STATUS[:published])
+end

@@ -1,16 +1,13 @@
-.container
-  .row
-    #channel
-      .col-md-8
-        .devise
-          %h3
-            = @category.name
-            %small= t(:category)
-          %hr
-          = render partial: 'category_posts_list'
+.col-md-8
+  .custom-background
+    %h3
+      = @category.name
+      %small= t(:category)
+    %hr
+    = render partial: 'category_posts_list'
 
-      .col-md-4
-        .posts.devise
-          %h4.related= t(:most_recent)
-          %hr
-          = render partial: 'recent_posts'
+.col-md-4
+  .posts.custom-background
+    %h3= t(:most_recent)
+    %hr
+    = render partial: 'recent_posts'

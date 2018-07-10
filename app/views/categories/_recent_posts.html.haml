@@ -1,12 +1,12 @@
--# - @recent.each do |post|
--#   %h5
--#     = link_to q_path(post) do
--#       = post.title
--#       %small= post.description.truncate(50, omission: " ... #{t(:continue_reading)}")
--#     %small
--#       ,
--#       = ownername(post)
--#       /
--#       = t(:shared_this)
--#       = time_ago_in_words(post.created_at)
--#   %hr
+- @recent.each do |post|
+  %h5
+    = link_to '#' do
+      = post.title
+      %small= post.description.truncate(50, omission: " ... #{t(:continue_reading)}")
+    %small
+      ,
+      = ownername(post)
+      /
+      = t(:shared_this)
+      = time_ago_in_words(post.created_at)
+  %hr

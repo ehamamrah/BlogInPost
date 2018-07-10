@@ -5,6 +5,8 @@ class CategoriesController < ApplicationController
   def show
     # get published posts in specific category
     @category_posts = @category.posts.published
+    # get most recent posts for the category
+    @recent = @category.posts.recent.order('RANDOM()').limit(15)
   end
 
   def create
