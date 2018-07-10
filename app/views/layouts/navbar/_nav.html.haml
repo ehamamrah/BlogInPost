@@ -9,16 +9,12 @@
       = link_to "Blog'n Post", root_path, class: 'navbar-brand logo'
     #navbar.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
-          = link_to '#' do
-            = icon('fas', 'list', t(:recent_posts))
+        %li.dropdown
+          = link_to '#', class: 'dropdown-toggle', "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :role => "button"  do
+            = icon('fas', 'briefcase', t(:categories))
 
-          %li.dropdown
-            = link_to '#', class: 'dropdown-toggle', "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :role => "button"  do
-              = icon('fas', 'briefcase', t(:categories))
-
-            %ul.dropdown-menu
-              = render partial: 'layouts/navbar/categories'
+          %ul.dropdown-menu
+            = render partial: 'layouts/navbar/categories'
 
       %ul.nav.navbar-nav.navbar-right
         = render partial: 'layouts/navbar/user_menu'

@@ -2,18 +2,19 @@ class Category < ApplicationRecord
   extend FriendlyId
   friendly_id :name, use: %i[slugged finders]
 
-  has_many :posts, dependent: :destroy
+  has_many :posts
 
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true, uniqueness: true, length: { minimum: 3 }
 
-  validate :empty_category?, on: :destroy
+  before_destroy :check_associations_with_posts
 
   scope :active,    (-> { where(status: CATEGORIES_STATUS[:active]) })
   scope :inactive,  (-> { where(status: CATEGORIES_STATUS[:inactive]) })
 
   private
 
-  def empty_category?
-    errors.add(:base, I18n.t(:cannot_remove_category_associated_with_posts)) if posts.present?
+  def check_associations_with_posts
+    return unless posts.present?
+    throw(:abort)
   end
 end

@@ -1,7 +1,9 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!, except: :show
   load_and_authorize_resource
 
   def show
+    # get published posts in specific category
     @category_posts = @category.posts.published
   end
 
@@ -28,11 +30,10 @@ class CategoriesController < ApplicationController
   def destroy
     if @category.destroy
       flash[:success] = t(:deleted_successfully)
-      redirect_to categories_path
     else
-      flash.now[:error] = @category.errors.full_messages
-      render :edit
+      flash[:alert] = t(:cannot_remove_category_associated_with_posts)
     end
+    redirect_to categories_path
   end
 
   private

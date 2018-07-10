@@ -8,7 +8,7 @@ class Ability
     elsif user.has_role?(ROLES[:superadmin])
       admin_ability
     else
-      can :read, :all
+      visitor_ability
     end
   end
 
@@ -17,10 +17,15 @@ class Ability
     can %i[edit read update destroy create], Post, user_id: user.id
 
     cannot :manage, Category
-    can :read, Category
+    can :show, Category
   end
 
   def admin_ability
     can :manage, :all
+  end
+
+  def visitor_ability
+    can :show, Category
+    can %i[show read index], Post
   end
 end

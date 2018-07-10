@@ -1,18 +1,21 @@
 module ApplicationHelper
-  # retrieve active categories only
   def active_categories
+    # retrieve active categories only
     Category.active
   end
 
   def ownername(object)
+    # Try to retrieve username to use it, otherwise use the email.
     object.user.try(:username) || object.user.email
   end
 
   def convert_date_format(date)
+    # convert date format to show dates withour time.
     date.strftime('%F')
   end
 
   def statuses
+    # get a list of categories statuses
     CATEGORIES_STATUS.map { |status, value| [status.capitalize, value] }
   end
 end
