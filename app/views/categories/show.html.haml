@@ -1,4 +1,4 @@
-.col-md-8
+.col-sm-8
   .custom-background
     %h3
       = @category.name
@@ -6,8 +6,8 @@
     %hr
     = render partial: 'category_posts_list'
 
-.col-md-4
-  .posts.custom-background
+.col-sm-4
+  .custom-background
     %h3= t(:most_recent)
     %hr
     = render partial: 'recent_posts'

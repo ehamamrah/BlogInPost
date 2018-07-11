@@ -1,7 +1,7 @@
 module ApplicationHelper
   def active_categories
     # retrieve active categories only
-    Category.active
+    Category.active.map { |category| [category.name, category.id] }
   end
 
   def ownername(object)
@@ -17,5 +17,10 @@ module ApplicationHelper
   def statuses
     # get a list of categories statuses
     CATEGORIES_STATUS.map { |status, value| [status.capitalize, value] }
+  end
+
+  def find_category(id)
+    # Find category by id
+    Category.find(id)
   end
 end

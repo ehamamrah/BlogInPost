@@ -1,13 +1,14 @@
-- @category_posts.each do |post|
-  .container-fluid
+.container-fluid
+  - @category_posts.each do |post|
     .row
       %h4
         = link_to '#' do
-          = post.title
-          %small= post.description.truncate(350, omission: " ... #{t(:continue_reading)}")
+          = icon('fas', 'newspaper', post.title)
+      %span
+        = post.description.truncate(350, omission: " ... #{t(:continue_reading)}")
     .row
       %small.category-posts
         = icon('fas', 'user', ownername(post))
       %small.category-posts
         = icon('fas', 'clock', convert_date_format(post.created_at))
-  %hr
+    %hr

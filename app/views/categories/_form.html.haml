@@ -1,7 +1,7 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'categories'
 
-.col-md-6.col-md-offset-3.custom-background
+.col-sm-6.col-sm-offset-3.custom-background
   %h2{ 'data-typer': 'hello' }= @category.persisted? ? t(:modify) + @category.name : t(:create_category)
   %hr
   = simple_form_for(@category) do |f|

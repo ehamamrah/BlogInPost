@@ -79,7 +79,8 @@ en:
   post_removed: Post removed successfully
   publish: Publish
   published: Published
-  please_select_status: Please select category status
+  select_status: Please select category status
+  select_category: Please select category
 
   ### R ###
   recent_posts: Recent Posts
