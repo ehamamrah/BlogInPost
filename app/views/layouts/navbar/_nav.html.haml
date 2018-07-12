@@ -15,6 +15,9 @@
 
           %ul.dropdown-menu
             = render partial: 'layouts/navbar/categories'
-
+        - if user_signed_in?
+          %li
+            = link_to new_post_path do
+              = icon('fas', 'plus', t(:create_post))
       %ul.nav.navbar-nav.navbar-right
         = render partial: 'layouts/navbar/user_menu'

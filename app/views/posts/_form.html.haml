@@ -1,31 +1,31 @@
 - content_for :javascript_includes do
   = javascript_include_tag 'posts'
+#post-form
+  .col-sm-6.col-sm-offset-3.custom-background
+    %h2{ 'data-typer': 'hello' }= @post.persisted? ? t(:modify) + @post.title : t(:create_post)
+    %hr
+    = simple_form_for(@post, html: { class: 'form-horizontal'} ) do |f|
+      - if @post.errors.present?
+        %ul{:class => "alert alert-danger"}
+          - @post.errors.messages.each do |key, value|
+            %li{style: 'margin-left: 5px;'}= "#{key.to_s} #{value.join(',')}"
 
-.col-sm-6.col-sm-offset-3.custom-background
-  %h2{ 'data-typer': 'hello' }= @post.persisted? ? t(:modify) + @post.title : t(:create_post)
-  %hr
-  = simple_form_for(@post, html: { class: 'form-horizontal'} ) do |f|
-    - if @post.errors.present?
-      %ul{:class => "alert alert-danger"}
-        - @post.errors.messages.each do |key, value|
-          %li{style: 'margin-left: 5px;'}= "#{key.to_s} #{value.join(',')}"
+      .form-group
+        .col-sm-12
+          = f.select :category_id, options_for_select(active_categories), { include_blank: t(:select_category) }, class: 'form-control', id: 'selected'
 
-    .form-group#category
-      .col-sm-12
-        = f.select :category_id, options_for_select(active_categories), { include_blank: t(:select_category) }, class: 'form-control'
+      .form-group#title
+        .col-sm-12
+          = f.text_field :title, required: true, label: false, placeholder: t(:title), class: 'form-control col-md-10'
 
-    .form-group#post-title
-      .col-sm-12
-        = f.text_field :title, required: true, label: false, placeholder: t(:title), class: 'form-control col-md-10'
+      .form-group#description
+        .col-sm-12
+          = f.text_area :description, required: true, label: false, placeholder: t(:description), class: 'form-control', rows: 3
 
-    .form-group#post-description
-      .col-sm-12
-        = f.text_area :description, required: true, label: false, placeholder: t(:description), class: 'form-control'
+      .form-group#content
+        .col-sm-12
+          = f.text_area :content, required: true, label: false, placeholder: t(:content), class: 'form-control', rows: 8
 
-    .form-group#post-content
-      .col-sm-12
-        = f.text_area :content, required: true, label: false, placeholder: t(:content), class: 'form-control'
-
-    .form-group#submit
-      .col-sm-12
-        = f.button :submit, t(:submit), class: 'form-control btn btn-danger'
+      .form-group#submit
+        .col-sm-12
+          = f.button :submit, t(:submit), class: 'form-control btn btn-danger'

@@ -1,27 +1,33 @@
-$(document).on('ready load mouseenter', function() {
-  triggerUserActions();
+var elements = ['#title', '#description', '#content', '#submit'];
+
+$(document).on('mouseenter', function(){
+  var pickedElement = 0;
+  for(pickedElement; pickedElement <= elements.length; pickedElement++){
+    window_is_refreshed() ? $(elements[pickedElement]).hide() : $(elements[pickedElement]).show();
+  };
 });
 
-function triggerUserActions() {
-  $('#category-status').hide();
-  $('#submit-category').hide();
+$(document).on('keydown', 'input', function(){
+  nextElement();
+});
 
-  var typingTimer = null;
-  $('#category_name').on('keydown', function() {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(chooseCategoryStatus, 1000);
-  });
+$(document).on('change', '#selected', function(){
+  $(elements[0]).show();
+});
 
-  $('#category_status').on('change', function() {
-    clearTimeout(typingTimer);
-    typingTimer = setTimeout(submitCategory, 1000);
-  });
-};
+function nextElement(){
+  var i = 0;
+  for(i; i <= elements.length; i++) {
+    goNext(i);
+  }
+}
 
-function chooseCategoryStatus() {
-  $('#category-status').show();
-};
+function goNext(i){
+  $(elements[i]).on('keydown', function(){
+    $(elements[i + 1]).show();
+  })
+}
 
-function submitCategory() {
-  $('#submit-category').show();
-};
+function window_is_refreshed(){
+  return $(document).context.location.href == $(document).context.location.origin + '/posts/new'
+}

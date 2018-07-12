@@ -2,10 +2,12 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
   load_and_authorize_resource
 
+  def show; end
+
   def create
     if @post.save
       flash[:success] = t(:successfully_created)
-      redirect_to posts_path(@post)
+      redirect_to post_path(@post)
     else
       flash.now[:error] = @post.errors.full_messages
       render :new
@@ -15,7 +17,7 @@ class PostsController < ApplicationController
   def update
     if @post.update_attributes(post_params)
       flash[:success] = t(:successfully_updated)
-      redirect_to posts_path(@post)
+      redirect_to post_path(@post)
     else
       flash.now[:error] = @post.errors.full_messages
       render :edit
@@ -27,13 +29,13 @@ class PostsController < ApplicationController
       flash[:success] = t(:deleted_successfully)
     else
       flash.now[:error] = @post.errors.full_messages
-      render :edit
     end
+    redirect_to root_path
   end
 
   private
 
   def post_params
-    params.require(:post).permit(:title, :description, :content).merge(category_id: params[:category_id], user: current_user)
+    params.require(:post).permit(:title, :description, :content).merge(category_id: params[:post][:category_id], user: current_user)
   end
 end
