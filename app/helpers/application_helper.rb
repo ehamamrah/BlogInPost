@@ -28,4 +28,8 @@ module ApplicationHelper
     return false unless user_signed_in?
     object.try(:user) == current_user
   end
+
+  def genders
+    GENDERS.map { |gender, id| [gender.capitalize, id] }
+  end
 end

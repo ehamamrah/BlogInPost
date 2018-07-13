@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
+  validates :username, uniqueness: true
+
   after_save :assign_role_to_user
 
   private

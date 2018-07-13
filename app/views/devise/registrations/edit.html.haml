@@ -1,18 +1,37 @@
-%h2
-  Edit #{resource_name.to_s.humanize}
-= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
-  = f.error_notification
-  .form-inputs
-    = f.input :email, required: true, autofocus: true
-    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-      %p
-        Currently waiting confirmation for: #{resource.unconfirmed_email}
-    = f.input :password, autocomplete: "off", hint: "leave it blank if you don't want to change it", required: false
-    = f.input :password_confirmation, required: false
-    = f.input :current_password, hint: "we need your current password to confirm your changes", required: true
-  .form-actions
-    = f.button :submit, "Update"
-%h3 Cancel my account
-%p
-  Unhappy? #{link_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete}
-= link_to "Back", :back
+.col-sm-4.col-sm-offset-4.custom-background
+  %h2= t(:settings)
+  %hr
+  = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = f.error_notification
+
+    -# General Info
+    .input-group
+      %span.input-group-addon
+        = icon('fas', 'user')
+      = f.input :username, label: false, class: 'form-control', :placeholder => t(:pick_user_name)
+    %br
+    .form-group
+      = f.select :gender, options_for_select(genders, f.object.gender), { include_blank: t(:select_gender) }, class: 'form-control'
+
+    -# Password Changes
+    %hr
+    = f.label t(:leave_blank), class: 'leave-blank'
+    .input-group
+      %span.input-group-addon
+        = icon('fas', 'lock')
+      = f.input :password, label: false, required: false, class: 'form-control', :placeholder => t(:create_password)
+    %br
+    .input-group
+      %span.input-group-addon
+        = icon('fas', 'lock')
+      = f.input :password_confirmation, label: false, required: false, class: 'form-control', :placeholder => t(:password_confirmation)
+    %hr
+
+    -# Current Password To Confirm Changes
+    .input-group
+      %span.input-group-addon
+        = icon('fas', 'lock')
+      = f.input :current_password, label: false, required: true, class: 'form-control', :placeholder => t(:current_password_required)
+    %hr
+    .input-group
+      = f.button :submit, t(:save), class: 'btn btn-danger'

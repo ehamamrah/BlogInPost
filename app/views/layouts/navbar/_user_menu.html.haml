@@ -5,7 +5,7 @@
 
     %ul.dropdown-menu
       %li
-        = link_to '#' do
+        = link_to edit_user_registration_path do
           = icon('fas', 'cogs', t(:settings))
 
       - if can?(:manage, Category)

@@ -11,3 +11,5 @@ CATEGORIES_STATUS = {
   inactive: 2,
   archived: 3
 }.freeze
+
+GENDERS = { male: 1, female: 2 }.freeze
