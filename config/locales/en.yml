@@ -29,6 +29,7 @@ en:
   create: Create
 
   ### D ###
+  creation_date: Creation Date
   deleted_successfully: Delete process done.
   didnt_recieve_confirmation: Didn't receive confirmation instructions?
   description: A brief about your post.
@@ -63,6 +64,7 @@ en:
   modify: 'Modify '
   missing_details: Some information required, please update your profile.
   most_recent: Most Recent
+  my_posts: My Posts
 
   ### N ###
   no_data: No data available

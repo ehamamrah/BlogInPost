@@ -1,0 +1,28 @@
+.container-fluid
+  .custom-background
+    .pull-left
+      %h2= t(:my_posts)
+      %p= t(:posts_list)
+    .pull-right
+      %h2
+      = link_to new_post_path, class: 'btn btn-info btn-sm custom-button' do
+        = icon('far','plus-square', t(:add))
+
+    %table.table.table-bordered.table-hover
+      %thead
+        %tr.custom-head
+          %th= t(:title)
+          %th.text-center= t(:status)
+          %th.text-center= t(:creation_date)
+          %th.text-center= t(:options)
+      %tbody
+      - @posts.each do |post|
+        %tr
+          %td= post.title
+          %td.text-center
+            %span{class: "label label-#{status_label(POST_STATUS.key(post.status))}"}
+              = POST_STATUS.key(post.status).capitalize
+          %td
+            .text-center= convert_date_format(post.created_at)
+          %td.text-center
+            = render partial: 'post_options', locals: { post: post }

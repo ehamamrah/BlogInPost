@@ -1,4 +1,6 @@
 module ApplicationHelper
+  STATUS_LABELS = { drafted: 'default', published: 'info', hidden: 'warning' }.freeze
+
   def active_categories
     # retrieve active categories only
     Category.active.map { |category| [category.name, category.id] }
@@ -25,11 +27,16 @@ module ApplicationHelper
   end
 
   def owner?(object)
+    # Check if current user is a passed object owner
     return false unless user_signed_in?
     object.try(:user) == current_user
   end
 
   def genders
     GENDERS.map { |gender, id| [gender.capitalize, id] }
+  end
+
+  def status_label(status)
+    return STATUS_LABELS[status] if STATUS_LABELS.include?(status)
   end
 end
