@@ -1,7 +1,7 @@
 - if user_signed_in?
   %li
     = link_to edit_user_registration_path do
-      = icon('fas', 'user', current_user.try(:username).capitalize || current_user.email)
+      = icon('fas', 'user', (current_user.try(:username) || current_user.email).capitalize)
   %li.dropdown
     = link_to '#', class: 'dropdown-toggle', "aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :role => "button"  do
       = icon('fas', 'bars', t(:menu))

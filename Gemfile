@@ -71,3 +71,9 @@ gem 'faker'
 
 # Flash Alert In Nice Way
 gem 'growlyflash'
+
+# Omniauth Gems
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'omniauth-google'
+gem 'omniauth-twitter'

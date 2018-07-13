@@ -22,3 +22,4 @@
 ./draper.sh
 .keep
 .swp
+.env
