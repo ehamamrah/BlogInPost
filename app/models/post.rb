@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   include Postable
+  include Statusable
 
   extend FriendlyId
   friendly_id :title, use: %i[slugged finders]
