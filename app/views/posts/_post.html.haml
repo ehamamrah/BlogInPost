@@ -1,0 +1,12 @@
+.container-fluid
+  .row
+    %p
+      .post-description= simple_format(post.description)
+    %p
+      .post-content= simple_format(post.content)
+%hr
+  %small.category-posts
+    = icon('fas', 'user', ownername(post))
+  %small.category-posts
+    = icon('fas', 'clock', convert_date_format(post.created_at))
+%hr

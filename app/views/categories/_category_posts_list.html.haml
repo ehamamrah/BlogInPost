@@ -2,7 +2,7 @@
   - @category_posts.each do |post|
     .row
       %h4
-        = link_to '#' do
+        = link_to post_path(post) do
           = icon('fas', 'newspaper', post.title)
       %span
         = post.description.truncate(350, omission: " ... #{t(:continue_reading)}")

@@ -2,7 +2,10 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
   load_and_authorize_resource
 
-  def show; end
+  def show
+    # Get category related posts
+    @related = Post.related_posts(@post.category_id).limit(20)
+  end
 
   def create
     if @post.save
