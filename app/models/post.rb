@@ -5,7 +5,8 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: %i[slugged finders]
 
-  is_impressionable
+  # Counter cache to count and save views directly
+  is_impressionable counter_cache: true, column_name: :views
 
   belongs_to :user
   belongs_to :category

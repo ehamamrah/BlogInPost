@@ -1,0 +1,10 @@
+- @posts.each do |post|
+  %h4
+    = link_to post_path(post) do
+      = icon('fas', 'newspaper', post.title)
+    .pull-right
+      %small
+        = link_to post.category.name, category_path(post.category), class: 'label label-info'
+  %span
+    = post.description.truncate(350, omission: " ... #{t(:continue_reading)}")
+  %hr

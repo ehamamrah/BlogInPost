@@ -1,0 +1,6 @@
+- @most_viewed.each do |post|
+  %h5
+    = link_to post_path(post) do
+      = post.title
+      %small= post.description.truncate(50, omission: " ... #{t(:continue_reading)}")
+  %hr

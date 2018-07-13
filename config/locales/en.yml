@@ -57,6 +57,7 @@ en:
   ### L ###
   leave_blank: leave it blank if you don't want to change it
   listing_all_categories: Listing all categories
+  latest_posts: Latest Posts
 
   ### M ###
   manage_categories: Manage Categories
@@ -66,6 +67,7 @@ en:
   modify: 'Modify '
   missing_details: Some information required, please update your profile.
   most_recent: Most Recent
+  most_viewed: Most Viewed
 
   ### N ###
   no_data: No data available

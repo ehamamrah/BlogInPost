@@ -2,8 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
   load_and_authorize_resource
 
-  impressionist actions: %i[show]
-
   def index
     # if user is superadmin then @posts will get all posts by all users [controlled by ability]
     @posts = @posts.order(created_at: :desc)

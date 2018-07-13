@@ -4,3 +4,17 @@
     .container-fluid
       %h2 Hello, Welcome to Blog'n Post
       %p#changeable-text.p-color Power your knowledge
+
+  .row
+    .col-sm-8
+      .custom-background
+        %h3
+          = t(:latest_posts)
+        %hr
+        = render partial: 'posts'
+    .col-sm-4
+      .custom-background
+        %h3
+          = t(:most_viewed)
+        %hr
+        = render partial: 'most_viewed'
