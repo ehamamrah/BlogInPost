@@ -2,11 +2,15 @@ module Postable
   extend ActiveSupport::Concern
 
   included do
+    # Post scopes to get posts based on status
     scope :drafted,       (-> { where(status: POST_STATUS[:drafted]) })
     scope :published,     (-> { where(status: POST_STATUS[:published]) })
     scope :hidden,        (-> { where(status: POST_STATUS[:hidden]) })
-    scope :recent,        (-> { published.where('created_at BETWEEN ? AND ?', Date.today - 5.days, Date.today) })
+    # Recent published posts
+    scope :recent,        (-> { published.order_by_date.where('created_at BETWEEN ? AND ?', Date.today - 5.days, Date.today) })
+    # Arrange posts based on date
     scope :order_by_date, (-> { order(created_at: :desc) })
-    scope :related_posts, (->(category_id) { order_by_date.where(category_id: category_id) })
+    # Get related posts based on category with condition published
+    scope :related_posts, (->(category_id) { published.order_by_date.where(category_id: category_id) })
   end
 end

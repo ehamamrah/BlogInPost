@@ -14,7 +14,7 @@ class Ability
 
   def user_ability(user)
     can :read, Post
-    can %i[edit read update destroy create], Post, user_id: user.id
+    can :manage, Post, user_id: user.id
 
     cannot :manage, Category
     can :show, Category
