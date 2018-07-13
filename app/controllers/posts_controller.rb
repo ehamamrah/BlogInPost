@@ -2,9 +2,14 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
   load_and_authorize_resource
 
+  def index
+    # if user is superadmin then @posts will get all posts by all users [controlled by ability]
+    @posts = @posts.order(created_at: :desc)
+  end
+
   def show
     # Get category related posts
-    @related = Post.related_posts(@post.category_id).limit(20)
+    @related = Post.related_posts(@post.category_id).limit(15)
   end
 
   def create

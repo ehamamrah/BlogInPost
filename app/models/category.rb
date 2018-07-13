@@ -11,6 +11,18 @@ class Category < ApplicationRecord
   scope :active,    (-> { where(status: CATEGORIES_STATUS[:active]) })
   scope :inactive,  (-> { where(status: CATEGORIES_STATUS[:inactive]) })
 
+  def active?
+    status == CATEGORIES_STATUS[:active]
+  end
+
+  def inactive?
+    status == CATEGORIES_STATUS[:inactive]
+  end
+
+  def archived?
+    status == CATEGORIES_STATUS[:archived]
+  end
+
   private
 
   def check_associations_with_posts

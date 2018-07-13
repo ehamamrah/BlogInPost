@@ -1,31 +1,17 @@
 .container-fluid
   .custom-background
-    .pull-left
-      %h2= t(:category_list)
-      %p= t(:listing_all_categories)
-    .pull-right
-      %h2
-      = link_to new_category_path, class: 'btn btn-info btn-sm custom-button' do
-        = icon('far','plus-square', t(:add))
-
-    %table.table.table-bordered.table-hover
-      %thead
-        %tr.custom-head
-          %th= t(:category_name)
-          %th= t(:posts_shared)
-          %th= t(:status)
-          %th= t(:options)
-      %tbody
-      - @categories.each do |category|
-        %tr
-          %td= category.name
-          %td
-            = category.posts.count
-            = t(:posts)
-          %td
-            = CATEGORIES_STATUS.key(category.status).capitalize
-          %td
-            = link_to edit_category_path(category), class: 'btn btn-warning btn-xs custom-button' do
-              = icon('far', 'edit', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:edit))
-            = link_to category_path(category), method: :delete, class: 'btn btn-danger btn-xs custom-button' do
-              = icon('far', 'trash-alt', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:delete))
+    .row
+      .pull-left
+        %h2= t(:categories)
+        %p= t(:listing_all_categories)
+      .pull-right
+        %h2
+        = link_to new_category_path, class: 'btn btn-info btn-sm custom-button' do
+          = icon('far','plus-square', t(:add))
+    %hr
+    .row
+      - if @categories.present?
+        = render partial: 'categories_list'
+      - else
+        .text-center
+          = t(:no_data)

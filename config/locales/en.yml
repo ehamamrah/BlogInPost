@@ -13,7 +13,7 @@ en:
   category: Category
   categories: Categories
   category_name: Category Name
-  cannot_remove_category_associated_with_posts: Category assosciated with active posts, not allowed to remove it.
+  cannot_remove_category_associated_with_posts: Category assosciated with posts, not allowed to remove it.
   change_password: Change Password
   characters_minimum: characters minimum
   contact_us: Contact Us
@@ -56,15 +56,16 @@ en:
 
   ### L ###
   leave_blank: leave it blank if you don't want to change it
+  listing_all_categories: Listing all categories
 
   ### M ###
   manage_categories: Manage Categories
+  manage_posts: Manage Posts
   member_since: 'Member Since: '
   menu: Menu
   modify: 'Modify '
   missing_details: Some information required, please update your profile.
   most_recent: Most Recent
-  my_posts: My Posts
 
   ### N ###
   no_data: No data available
@@ -94,6 +95,7 @@ en:
   ### S ###
   save: Save
   settings: Settings
+  shared: Shared
   shared_this: shared this
   select_gender: Select Gender
   send: Send

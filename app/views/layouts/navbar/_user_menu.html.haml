@@ -19,7 +19,7 @@
       - if can?(:manage, Post, user_id: current_user.id)
         %li
           = link_to posts_path do
-            = icon('fas', 'file-alt', t(:my_posts))
+            = icon('fas', 'file-alt', t(:manage_posts))
 
       %li.divider{:role => "separator"}
       %li

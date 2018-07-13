@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   load_and_authorize_resource
 
   def show
+    check_category_status
     # get published posts in specific category
     @category_posts = @category.posts.published
     # get most recent posts for the category
@@ -43,5 +44,11 @@ class CategoriesController < ApplicationController
 
   def category_params
     params.require(:category).permit(:name, :status)
+  end
+
+  def check_category_status
+    # return user to main page if category is archived or inactive
+    return if @category.active?
+    redirect_to root_path
   end
 end
