@@ -79,6 +79,7 @@ en:
   ### P ###
   password: Password
   password_confirmation: Confirm Password
+  phonenumber: Phone Number
   pick_a_username: Pick a username
   posts_shared: Posts Shared
   posts_list: Posts List
@@ -100,6 +101,7 @@ en:
   shared: Shared
   shared_this: shared this
   select_gender: Select Gender
+  select_country: Select Country
   send: Send
   sign_in: Sign In
   sign_in_with: 'Sign in with '

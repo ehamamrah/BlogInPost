@@ -69,6 +69,7 @@ gem 'cancancan', '~> 2.0'
 gem 'rolify'
 gem 'faker'
 gem 'dotenv-rails'
+gem 'country_select'
 
 # Flash Alert In Nice Way
 gem 'growlyflash'
@@ -78,5 +79,8 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
-# Managing views on posts 
+# Managing views on posts
 gem 'impressionist'
+
+# Authy for 2FA
+gem 'authy'

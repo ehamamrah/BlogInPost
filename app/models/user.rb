@@ -21,6 +21,11 @@ class User < ApplicationRecord
     end
   end
 
+  def country_name
+    country = ISO3166::Country[country_code]
+    country.translations[I18n.locale.to_s] || country.name
+  end
+
   private
 
   def assign_role_to_user

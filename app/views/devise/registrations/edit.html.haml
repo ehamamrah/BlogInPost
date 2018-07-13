@@ -13,6 +13,14 @@
     .form-group
       = f.select :gender, options_for_select(genders, f.object.gender), { include_blank: t(:select_gender) }, class: 'form-control'
 
+    .form-group
+      = f.country_select :country_code, priority_countries = ['JO', 'Palestine', 'Egypt', 'Syria', 'Lebanon', 'SA', 'United Arab Emirates', 'Qatar', 'Oman', 'Iraq'], { prompt: t(:select_country) }, {:class=>'form-control'}
+
+    .input-group
+      %span.input-group-addon
+        = icon('fas', 'mobile-alt')
+      = f.input :phone_number, label: false, class: 'form-control', :placeholder => t(:phonenumber)
+
     -# Password Changes
     %hr
     = f.label t(:leave_blank), class: 'leave-blank'
