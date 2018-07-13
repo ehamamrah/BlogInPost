@@ -1,5 +1,7 @@
 module ApplicationHelper
   STATUS_LABELS = { drafted: 'default', published: 'info', hidden: 'warning' }.freeze
+  PROVIDERS = { facebook: { icon: 'facebook-square', name: 'Facebook' },
+                google_oauth2: { icon: 'google-plus-square', name: 'Google' } }.freeze
 
   def active_categories
     # retrieve active categories only
@@ -40,5 +42,12 @@ module ApplicationHelper
   def status_label(status)
     # Return status label specified color
     return STATUS_LABELS[status] if STATUS_LABELS.include?(status)
+  end
+
+  def link_to_provider(provider, resource, controller)
+    link_to omniauth_authorize_path(resource, provider) do
+      provider_text = controller == 'registrations' ? "#{t(:sign_up_with)}" : "#{t(:sign_in_with)}"
+      icon('fab', PROVIDERS[provider][:icon], "#{provider_text} #{PROVIDERS[provider][:name]}")
+    end
   end
 end
