@@ -9,6 +9,8 @@
     = icon('fas', 'user', ownername(post))
   %small.category-posts
     = icon('fas', 'clock', convert_date_format(post.created_at))
+  %small.category-posts
+    = icon('fas', 'eye', post.impressionist_count)
   - if owner?(post) || can?(:manage, post)
     .pull-right
       = render partial: 'post_options', locals: { post: post }

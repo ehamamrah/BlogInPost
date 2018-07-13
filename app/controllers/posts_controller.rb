@@ -2,6 +2,8 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: :show
   load_and_authorize_resource
 
+  impressionist actions: %i[show]
+
   def index
     # if user is superadmin then @posts will get all posts by all users [controlled by ability]
     @posts = @posts.order(created_at: :desc)
@@ -10,6 +12,9 @@ class PostsController < ApplicationController
   def show
     # Get category related posts
     @related = Post.related_posts(@post.category_id).limit(15)
+
+    # Add impression (one viewer) to post
+    impressionist(@post)
   end
 
   def create

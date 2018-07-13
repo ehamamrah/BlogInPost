@@ -5,6 +5,8 @@ class Post < ApplicationRecord
   extend FriendlyId
   friendly_id :title, use: %i[slugged finders]
 
+  is_impressionable
+
   belongs_to :user
   belongs_to :category
 

@@ -77,3 +77,6 @@ gem 'growlyflash'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
+
+# Managing views on posts 
+gem 'impressionist'
