@@ -1,8 +1,4 @@
 module ApplicationHelper
-  STATUS_LABELS = { drafted: 'default', published: 'info', hidden: 'warning' }.freeze
-  PROVIDERS = { facebook: { icon: 'facebook-square', name: 'Facebook' },
-                google_oauth2: { icon: 'google-plus-square', name: 'Google' } }.freeze
-
   def active_categories
     # retrieve active categories only
     Category.active.map { |category| [category.name, category.id] }
