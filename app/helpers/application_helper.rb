@@ -33,10 +33,12 @@ module ApplicationHelper
   end
 
   def genders
+    # return genders in array of arrays
     GENDERS.map { |gender, id| [gender.capitalize, id] }
   end
 
   def status_label(status)
+    # Return status label specified color
     return STATUS_LABELS[status] if STATUS_LABELS.include?(status)
   end
 end
