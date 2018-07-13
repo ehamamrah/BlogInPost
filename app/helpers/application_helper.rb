@@ -23,4 +23,9 @@ module ApplicationHelper
     # Find category by id
     Category.find(id)
   end
+
+  def owner?(object)
+    return false unless user_signed_in?
+    object.try(:user) == current_user
+  end
 end

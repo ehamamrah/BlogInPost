@@ -12,7 +12,7 @@
 
       .form-group
         .col-sm-12
-          = f.select :category_id, options_for_select(active_categories), { include_blank: t(:select_category) }, class: 'form-control', id: 'selected'
+          = f.select :category_id, options_for_select(active_categories, @post.category_id), { include_blank: t(:select_category) }, class: 'form-control', id: 'selected'
 
       .form-group#title
         .col-sm-12

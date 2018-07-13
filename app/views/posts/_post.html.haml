@@ -9,4 +9,10 @@
     = icon('fas', 'user', ownername(post))
   %small.category-posts
     = icon('fas', 'clock', convert_date_format(post.created_at))
+  - if owner?(post) || can?(:manage, post)
+    .pull-right
+      = link_to edit_post_path(post), class: 'btn btn-warning btn-xs custom-button' do
+        = icon('far', 'edit', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:edit))
+      = link_to post_path(post), method: :delete, class: 'btn btn-danger btn-xs custom-button' do
+        = icon('far', 'trash-alt', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:delete))
 %hr
