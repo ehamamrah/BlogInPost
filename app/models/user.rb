@@ -26,6 +26,15 @@ class User < ApplicationRecord
     country.translations[I18n.locale.to_s] || country.name
   end
 
+  def country_phone_code
+    country = ISO3166::Country[country_code]
+    country.country_code
+  end
+
+  def allowed_to_share_posts?
+    authy_id.present? && authy_enabled?
+  end
+
   private
 
   def assign_role_to_user
