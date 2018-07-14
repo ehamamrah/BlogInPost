@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   def update_resource(resource, params)
-    register_user_for_2fa unless resource.authy_enabled?
+    register_user_for_2fa(resource) unless resource.authy_enabled?
     if user_registered_through_provider?
       params.delete('current_password')
       resource.update_without_password(params)
