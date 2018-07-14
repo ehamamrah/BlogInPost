@@ -19,5 +19,5 @@
     .text-center
       %p
         = t(:no_data)
-
-= render partial: 'comments/form'
+- if user_signed_in?
+  = render partial: 'comments/form'
