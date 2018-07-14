@@ -11,6 +11,8 @@ class Post < ApplicationRecord
   belongs_to :user
   belongs_to :category
 
+  has_many :comments, dependent: :destroy
+
   validates_presence_of :title, :description, :content
   validates :title, length: { minimum: 2 }
   validates :description, length: { maximum: 450 }

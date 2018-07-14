@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :trackable, :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :username, uniqueness: true, on: :update
   validates_presence_of :phone_number, :country_code, unless: -> { using_omniauth? }

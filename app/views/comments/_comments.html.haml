@@ -1,0 +1,23 @@
+- if @post.comments.present?
+  - @post.comments.order(created_at: :desc).each do |comment|
+    .container-fluid.well.well-sm
+      %p
+        = simple_format(comment.content)
+      %hr
+        %small.category-posts
+          = icon('fas', 'user', ownername(comment))
+
+        %small.category-posts
+          = icon('fas', 'clock', convert_date_format(comment.created_at))
+
+        - if owner?(comment) || can?(:manage, comment)
+          .pull-right
+            = render partial: 'comments/comment_options', locals: { comment: comment}
+
+- else
+  .container-fluid
+    .text-center
+      %p
+        = t(:no_data)
+
+= render partial: 'comments/form'

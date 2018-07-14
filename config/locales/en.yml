@@ -28,6 +28,10 @@ en:
   current_password: Current Password
   create_password: Create new password
   create: Create
+  comments: Comments
+  comment: Comment
+  comment_created: 'Comment was successfully created.'
+  comment_deleted: 'Comment was successfully deleted.'
 
   ### D ###
   creation_date: Creation Date
@@ -128,6 +132,7 @@ en:
   ### T ###
   trash: Trash
   title: Title
+  type_comment: Type your comment here
 
   ### U ###
   unlock_instructions: Didn't receive unlock instructions?

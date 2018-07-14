@@ -13,8 +13,15 @@ class Ability
   end
 
   def user_ability(user)
+    # Posts Abilities
     can    :show, Post
     can    :manage, Post, user_id: user.id
+
+    # Comments Abilities
+    can    :show, Comment
+    can    :manage, Comment, user_id: user.id
+
+    # Categories Abilities
     cannot :manage, Category
     can    :show, Category
   end
@@ -26,5 +33,6 @@ class Ability
   def visitor_ability
     can    :show, Category
     can    :show, Post
+    can    :show, Comment
   end
 end

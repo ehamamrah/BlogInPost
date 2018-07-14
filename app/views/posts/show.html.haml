@@ -8,6 +8,15 @@
     %hr
     = render partial: 'post', locals: { post: @post }
 
+  -# Comments Section
+  - if @post.published?
+    .custom-background{style: 'margin-top:10px'}
+      %h3
+        .comments-section-head= t(:comments)
+      %hr
+      = render partial: 'comments/comments'
+
+
 .col-sm-4
   .custom-background
     %h3= t(:related_posts)
