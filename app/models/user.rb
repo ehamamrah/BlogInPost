@@ -7,10 +7,12 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
 
-  validates :username, uniqueness: true
+  validates :username, uniqueness: true, on: :update
   validates_presence_of :phone_number, :country_code, unless: -> { using_omniauth? }
 
   after_save :assign_role_to_user
+
+  before_create :generate_random_username
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
@@ -46,5 +48,9 @@ class User < ApplicationRecord
   def assign_role_to_user
     # assign a normal user previliges unless it's the first user
     add_role(ROLES[:user]) unless self == User.first
+  end
+
+  def generate_random_username
+    self.username = email
   end
 end

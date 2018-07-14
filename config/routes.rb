@@ -4,6 +4,10 @@ Rails.application.routes.draw do
   root 'pages#home'
   resources :categories
   resources :posts do
+    member do
+      post :hide
+      post :publish
+    end
     resources :verifications do
       collection do
         post :generate_new_otp

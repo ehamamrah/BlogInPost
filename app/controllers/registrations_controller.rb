@@ -1,6 +1,6 @@
 class RegistrationsController < Devise::RegistrationsController
   def update_resource(resource, params)
-    register_user_for_2fa unless @user.authy_enabled?
+    register_user_for_2fa unless resource.authy_enabled?
     if user_registered_through_provider?
       params.delete('current_password')
       resource.update_without_password(params)
@@ -9,19 +9,26 @@ class RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def create
+    # This is to overwrite creating user method from devise, required to register user 2FA
+    super
+    register_user_for_2fa(resource) unless resource.authy_enabled?
+  end
+
   private
 
   def user_registered_through_provider?
     current_user.provider.present?
   end
 
-  def register_user_for_2fa
+  def register_user_for_2fa(resource)
     authy = Authy::API.register_user(
-      email: @user.email,
-      cellphone: @user.phone_number,
-      country_code: @user.country_phone_code
+      email: resource.email,
+      cellphone: resource.phone_number,
+      country_code: resource.country_phone_code
     )
-    @user.update_attributes(authy_id: authy.id, authy_enabled: true) if authy.present?
+    return unless authy.present?
+    resource.update authy_id: authy.id, authy_enabled: true
   end
 
   def sign_up_params

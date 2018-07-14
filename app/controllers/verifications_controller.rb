@@ -1,9 +1,15 @@
 class VerificationsController < ApplicationController
   before_action :authenticate_user!
   before_action :find_post
-  before_action :send_token_for_verification, only: %i[new generate_new_otp]
+  before_action :send_token_for_verification, only: %i[generate_new_otp]
 
-  def new; end
+  def new
+    if current_user.authy_enabled?
+      send_token_for_verification
+    else
+      flash.now[:error] = t(:verification_is_required)
+    end
+  end
 
   def create
     request_authy_validation

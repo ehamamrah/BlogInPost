@@ -19,6 +19,12 @@ module Postable
   end
 
   def publish
+    return unless status.in?([POST_STATUS[:drafted], POST_STATUS[:hidden]])
     update_attribute(:status, POST_STATUS[:published])
+  end
+
+  def hide
+    return unless status.in?([POST_STATUS[:published]])
+    update_attribute(:status, POST_STATUS[:hidden])
   end
 end

@@ -49,6 +49,7 @@ en:
   ### H ###
   home: Home
   hidden: Hidden
+  hide: Hide
 
   ### I ###
   is_active: Active
@@ -97,6 +98,7 @@ en:
   publish: Publish
   published: Published
   pick_user_name: Choose Username
+  post_is_hidden_now: Post now is set to hidden
 
   ### R ###
   recent_posts: Recent Posts
@@ -136,6 +138,7 @@ en:
   ### V ###
   verify_account: OTP Verification
   verify: Verify
+  verification_is_required: Please update your profile details in order to verify and publish your posts.
 
   ### W ###
   welcome: 'Welcome '

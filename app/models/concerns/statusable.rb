@@ -20,4 +20,8 @@ module Statusable
   def drafted?
     status == POST_STATUS[:drafted]
   end
+
+  def hidden?
+    status == POST_STATUS[:hidden]
+  end
 end

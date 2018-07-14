@@ -1,7 +1,17 @@
 = link_to edit_post_path(post), class: 'btn btn-warning btn-xs custom-button' do
   = icon('far', 'edit', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:edit))
+
 = link_to post_path(post), method: :delete, class: 'btn btn-danger btn-xs custom-button' do
   = icon('far', 'trash-alt', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:delete))
-- unless post.published?
-  = link_to new_post_verification_path(post), class: 'btn btn-success btn-xs custom-button' do
+
+- if post.hidden?
+  = link_to publish_post_path(post), method: :post, class: 'btn btn-success btn-xs custom-button' do
+    = icon('far', 'share-square', t(:publish))
+
+- if post.drafted?
+  = link_to new_post_verification_path(post), class: 'btn btn-info btn-xs custom-button' do
     = icon('far', 'check-circle', t(:verify))
+
+- if post.published?
+  = link_to hide_post_path(post), method: :post, class: 'btn btn-primary btn-xs custom-button' do
+    = icon('far', 'eye-slash', t(:hide))

@@ -44,6 +44,24 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def hide
+    if @post.hide
+      flash[:success] = t(:post_is_hidden_now)
+    else
+      flash.now[:error] = @post.errors.full_messages
+    end
+    redirect_back fallback_location: post_path(@post)
+  end
+
+  def publish
+    if @post.publish
+      flash[:success] = t(:post_published)
+    else
+      flash.now[:error] = @post.errors.full_messages
+    end
+    redirect_back fallback_location: post_path(@post)
+  end
+
   private
 
   def post_params
