@@ -8,7 +8,7 @@ module Postable
     scope :hidden,        (-> { where(status: POST_STATUS[:hidden]) })
 
     # Recent published posts
-    scope :recent,        (-> { published.order_by_date.where('created_at BETWEEN ? AND ?', Date.today - 5.days, Date.today) })
+    scope :recent,        (-> { published.order_by_date.where('created_at BETWEEN ? AND ?', Date.today - 5.days, Date.today + 1.day) })
 
     # Arrange posts based ordering
     scope :order_by_date,  (-> { order(created_at: :desc) })
