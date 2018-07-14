@@ -4,16 +4,20 @@ class VerificationsController < ApplicationController
   before_action :send_token_for_verification, only: %i[generate_new_otp]
 
   def new
+    # If user authy is enabled, it will send token for verifications
     if current_user.authy_enabled?
-      send_token_for_verification
+      current_user.send_token_for_verification
     else
       flash.now[:error] = t(:verification_is_required)
     end
   end
 
   def create
+    # Verify if user is authorized
     request_authy_validation
+
     if @request.success?
+      # Change post to published
       @post.publish
       flash.now[:success] = t(:post_published)
       redirect_to post_path(@post)
@@ -24,6 +28,7 @@ class VerificationsController < ApplicationController
   end
 
   def generate_new_otp
+    # Generating new OTP and sending it to user
     flash[:success] = t(:otp_sent)
     render :new, params: { post_id: @post.id }
   end
@@ -31,7 +36,7 @@ class VerificationsController < ApplicationController
   private
 
   def send_token_for_verification
-    @post.send_token_for_verification
+    current_user.send_token_for_verification
   end
 
   def request_authy_validation

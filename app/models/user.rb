@@ -26,20 +26,16 @@ class User < ActiveRecord::Base
     end
   end
 
-  def country_name
-    return unless country_code.present?
-    country = ISO3166::Country[country_code]
-    country.translations[I18n.locale.to_s] || country.name
-  end
-
   def country_phone_code
+    # To get country international key number
     return unless country_code.present?
     country = ISO3166::Country[country_code]
     country.country_code || country.translations[I18n.locale.to_s]
   end
 
-  def allowed_to_share_posts?
-    authy_id.present? && authy_enabled?
+  def send_token_for_verification
+    # Send OTP Number
+    Authy::API.request_sms(id: authy_id)
   end
 
   private

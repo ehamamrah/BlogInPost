@@ -18,6 +18,7 @@ class PostsController < ApplicationController
   def create
     if @post.save
       flash[:success] = t(:successfully_created)
+      # Will redirect to OTP verification page
       redirect_to new_post_verification_path(@post)
     else
       flash.now[:error] = @post.errors.full_messages
@@ -45,6 +46,7 @@ class PostsController < ApplicationController
   end
 
   def hide
+    # Will hide post if its published
     if @post.hide
       flash[:success] = t(:post_is_hidden_now)
     else
@@ -54,6 +56,7 @@ class PostsController < ApplicationController
   end
 
   def publish
+    # It will republish post if its hidden
     if @post.publish
       flash[:success] = t(:post_published)
     else

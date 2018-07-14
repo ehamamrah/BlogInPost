@@ -13,12 +13,9 @@ class Post < ApplicationRecord
 
   has_many :comments, dependent: :destroy
 
-  validates_presence_of :title, :description, :content
   validates :title, length: { minimum: 2 }
   validates :description, length: { maximum: 450 }
   validates :content, length: { in: 6..5000 }
 
-  def send_token_for_verification
-    Authy::API.request_sms(id: user.authy_id)
-  end
+  validates_presence_of :title, :description, :content
 end
