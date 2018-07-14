@@ -19,5 +19,5 @@
       %td
         .text-center
           = convert_date_format(post.created_at)
-      %td.text-center
+      %td
         = render partial: 'post_options', locals: { post: post }
