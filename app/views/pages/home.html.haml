@@ -1,6 +1,9 @@
+- content_for :javascript_includes do
+  = javascript_include_tag 'pages'
+
 .container-fluid
   / Jumbotron
-  .jumbotron.custom-jumbotron
+  .jumbotron.custom-jumbotron#custom-jumbotron
     .container-fluid
       %h2 Hello, Welcome to Blog'n Post
       %p#changeable-text.p-color Power your knowledge
