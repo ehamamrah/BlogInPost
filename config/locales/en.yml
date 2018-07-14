@@ -103,6 +103,7 @@ en:
   published: Published
   pick_user_name: Choose Username
   post_is_hidden_now: Post now is set to hidden
+  phone_number_incorrect: not matching country standard
 
   ### R ###
   recent_posts: Recent Posts

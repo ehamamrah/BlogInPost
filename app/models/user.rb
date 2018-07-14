@@ -1,4 +1,4 @@
-class User < ApplicationRecord
+class User < ActiveRecord::Base
   rolify
 
   devise :database_authenticatable, :registerable,
@@ -9,6 +9,8 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   validates :username, uniqueness: true, on: :update
+  validate :check_phone_number, unless: -> { omniauth_new_registration? }
+
   validates_presence_of :phone_number, :country_code, unless: -> { using_omniauth? }
 
   after_save :assign_role_to_user
@@ -46,6 +48,10 @@ class User < ApplicationRecord
     provider && uid
   end
 
+  def omniauth_new_registration?
+    new_record? && using_omniauth?
+  end
+
   def assign_role_to_user
     # assign a normal user previliges unless it's the first user
     add_role(ROLES[:user]) unless self == User.first
@@ -53,5 +59,9 @@ class User < ApplicationRecord
 
   def generate_random_username
     self.username = email
+  end
+
+  def check_phone_number
+    errors[:phone_number] << I18n.t(:phone_number_incorrect) unless Phonelib.valid_for_country? phone_number, country_code
   end
 end

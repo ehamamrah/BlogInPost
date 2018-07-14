@@ -70,6 +70,7 @@ gem 'rolify'
 gem 'faker'
 gem 'dotenv-rails'
 gem 'country_select'
+gem 'phonelib'
 
 # Flash Alert In Nice Way
 gem 'growlyflash'
