@@ -1,0 +1,12 @@
+.col-sm-6.col-sm-offset-3.custom-background
+  %h2= t(:verify_account)
+  %p= t(:ability_to_post)
+  %hr
+  = simple_form_for(:request, url: post_verifications_path, html: { class: 'form-horizontal'} ) do |f|
+    .form-group
+      .col-sm-12
+        = text_field_tag :token, params[:token], required: true, label: false, placeholder: t(:otp_required), class: 'form-control col-md-10'
+
+    .form-input
+      = f.button :submit, t(:submit), class: 'btn btn-danger'
+      = link_to t(:generate_new_otp), generate_new_otp_post_verifications_path, method: :post, post_id: params[:post_id], class: 'btn btn-default'

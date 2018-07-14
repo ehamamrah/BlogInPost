@@ -3,5 +3,11 @@ Rails.application.routes.draw do
 
   root 'pages#home'
   resources :categories
-  resources :posts
+  resources :posts do
+    resources :verifications do
+      collection do
+        post :generate_new_otp
+      end
+    end
+  end
 end

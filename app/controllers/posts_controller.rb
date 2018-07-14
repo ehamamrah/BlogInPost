@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   def create
     if @post.save
       flash[:success] = t(:successfully_created)
-      redirect_to post_path(@post)
+      redirect_to new_post_verification_path(@post)
     else
       flash.now[:error] = @post.errors.full_messages
       render :new

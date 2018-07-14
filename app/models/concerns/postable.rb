@@ -17,4 +17,8 @@ module Postable
     # Get related posts based on category with condition published
     scope :related_posts, (->(category_id) { published.order_by_date.where(category_id: category_id) })
   end
+
+  def publish
+    update_attribute(:status, POST_STATUS[:published])
+  end
 end

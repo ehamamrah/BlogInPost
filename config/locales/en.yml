@@ -42,6 +42,9 @@ en:
   ### F ###
   forgot_your_password: Forgot your password?
 
+  ### G ###
+  generate_new_otp: Generate new OTP
+
   ### H ###
   home: Home
   hidden: Hidden
@@ -75,6 +78,8 @@ en:
 
   ### O ###
   options: Options
+  otp_required: Please enter one time password you received through SMS
+  otp_sent: New Generated OTP sent to you.
 
   ### P ###
   password: Password
@@ -87,6 +92,7 @@ en:
   post: Post
   post_title: Post Title
   post_removed: Post removed successfully
+  post_published: Post published successfully.
   publish: Publish
   published: Published
   pick_user_name: Choose Username
@@ -124,9 +130,11 @@ en:
   unlock_instructions: Didn't receive unlock instructions?
   username: Username
   update: Update
+  used_token: OTP used before, please generate new one.
 
   ### W ###
   welcome: 'Welcome '
+  wrong_token: You entered wrong one time password, Please try again.
 
   ### Y ###
   your_email: Your Email
