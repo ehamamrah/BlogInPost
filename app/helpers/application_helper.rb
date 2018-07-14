@@ -46,4 +46,9 @@ module ApplicationHelper
       icon('fab', PROVIDERS[provider][:icon], "#{provider_text} #{PROVIDERS[provider][:name]}")
     end
   end
+
+  def registered_without_details?
+    return unless user_signed_in?
+    !current_user.phone_number.present? && !current_user.country_code.present?
+  end
 end

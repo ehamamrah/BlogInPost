@@ -3,12 +3,12 @@ class User < ApplicationRecord
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable,
-         :trackable, :validatable,
-         :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
+         :trackable, :omniauthable, omniauth_providers: %i[google_oauth2 facebook]
 
   has_many :posts, dependent: :destroy
 
   validates :username, uniqueness: true
+  validates_presence_of :phone_number, :country_code, unless: -> { using_omniauth? }
 
   after_save :assign_role_to_user
 
@@ -22,13 +22,15 @@ class User < ApplicationRecord
   end
 
   def country_name
+    return unless country_code.present?
     country = ISO3166::Country[country_code]
     country.translations[I18n.locale.to_s] || country.name
   end
 
   def country_phone_code
+    return unless country_code.present?
     country = ISO3166::Country[country_code]
-    country.country_code
+    country.country_code || country.translations[I18n.locale.to_s]
   end
 
   def allowed_to_share_posts?
@@ -36,6 +38,10 @@ class User < ApplicationRecord
   end
 
   private
+
+  def using_omniauth?
+    provider && uid
+  end
 
   def assign_role_to_user
     # assign a normal user previliges unless it's the first user

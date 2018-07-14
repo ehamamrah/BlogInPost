@@ -21,11 +21,11 @@ class RegistrationsController < Devise::RegistrationsController
       cellphone: @user.phone_number,
       country_code: @user.country_phone_code
     )
-    @user.update_attributes(authy_id: authy.id, authy_enabled: true)
+    @user.update_attributes(authy_id: authy.id, authy_enabled: true) if authy.present?
   end
 
   def sign_up_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :phone_number, :country_code)
   end
 
   def account_update_params

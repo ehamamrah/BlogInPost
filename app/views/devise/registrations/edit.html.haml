@@ -2,7 +2,10 @@
   %h2= t(:settings)
   %hr
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = f.error_notification
+    - if @user.errors.present?
+      %ul{:class => "alert alert-danger"}
+        - @user.errors.messages.each do |key, value|
+          %li{style: 'margin-left: 5px;'}= "#{key.to_s} #{value.join(',')}"
 
     -# General Info
     .input-group
@@ -14,12 +17,12 @@
       = f.select :gender, options_for_select(genders, f.object.gender), { include_blank: t(:select_gender) }, class: 'form-control'
 
     .form-group
-      = f.country_select :country_code, priority_countries = ['JO', 'Palestine', 'Egypt', 'Syria', 'Lebanon', 'SA', 'United Arab Emirates', 'Qatar', 'Oman', 'Iraq'], { prompt: t(:select_country) }, {:class=>'form-control'}
+      = f.country_select :country_code, priority_countries = ['JO', 'Palestine', 'Egypt', 'Syria', 'Lebanon', 'SA', 'United Arab Emirates', 'Qatar', 'Oman', 'Iraq'], { prompt: t(:select_country) }, class:'form-control', required: true
 
     .input-group
       %span.input-group-addon
         = icon('fas', 'mobile-alt')
-      = f.input :phone_number, label: false, class: 'form-control', :placeholder => t(:phonenumber)
+      = f.input :phone_number, label: false, class: 'form-control', required: true, :placeholder => t(:phonenumber)
 
     -# Password Changes
     %hr

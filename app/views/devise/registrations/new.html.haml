@@ -2,14 +2,26 @@
   %h2= t(:join_us)
   %hr
   = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
-    = f.error_notification
+    - if f.object.errors.present?
+      %ul{:class => "alert alert-danger"}
+        - f.object.errors.messages.each do |key, value|
+          %li{style: 'margin-left: 5px;'}= "#{key.to_s} #{value.join(',')}"
 
     .input-group
       %span.input-group-addon
         = icon('fas', 'user')
       = f.input :email, label: false, required: true, class: 'form-control', :placeholder => t(:your_email), :type => "text"
-
     %br
+
+    .form-group
+      = f.country_select :country_code, priority_countries = ['JO', 'Palestine', 'Egypt', 'Syria', 'Lebanon', 'SA', 'United Arab Emirates', 'Qatar', 'Oman', 'Iraq'], { prompt: t(:select_country) }, class:'form-control', required: true
+
+    .input-group
+      %span.input-group-addon
+        = icon('fas', 'mobile-alt')
+      = f.input :phone_number, label: false, class: 'form-control', required: true, :placeholder => t(:phonenumber)
+    %br
+
     .input-group
       %span.input-group-addon
         = icon('fas', 'lock')
