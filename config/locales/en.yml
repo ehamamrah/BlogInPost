@@ -5,6 +5,7 @@ en:
   account: Account
   add: 'New'
   active_category: Active Category
+  ability_to_post: In order to publish your post to public, Please verify your account.
 
   ### B ###
   bio: Biography
@@ -131,6 +132,10 @@ en:
   username: Username
   update: Update
   used_token: OTP used before, please generate new one.
+
+  ### V ###
+  verify_account: OTP Verification
+  verify: Verify
 
   ### W ###
   welcome: 'Welcome '

@@ -2,3 +2,6 @@
   = icon('far', 'edit', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:edit))
 = link_to post_path(post), method: :delete, class: 'btn btn-danger btn-xs custom-button' do
   = icon('far', 'trash-alt', "data-toggle": 'tooltip', "data-placement": 'top', title: t(:delete))
+- unless post.published?
+  = link_to new_post_verification_path(post), class: 'btn btn-success btn-xs custom-button' do
+    = icon('far', 'check-circle', t(:verify))
