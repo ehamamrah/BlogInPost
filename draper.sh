@@ -23,9 +23,6 @@ tmux send-key       -t draper 'cd $DRAPER_LOCATION'      Enter 'rails c'        
 tmux new-window     -t draper -n 'Vim'
 tmux send-key       -t draper 'cd $DRAPER_LOCATION'      Enter 'vim .'                                           Enter
 
-tmux new-window     -t draper -n 'Atom'
-tmux send-key       -t draper 'cd $DRAPER_LOCATION'      Enter 'atom .'                                           Enter
-
 if [ -z "$NESTED_TMUX" ]; then
   tmux -2 attach-session -t draper
 else
